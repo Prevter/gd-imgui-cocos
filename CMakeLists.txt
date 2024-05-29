@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(imgui-cocos LANGUAGES CXX OBJCXX)
+project(imgui-cocos LANGUAGES CXX)
+if (APPLE) # enable OBJCXX for macOS
+    enable_language(OBJCXX)
+endif()
 
 add_library(imgui-cocos INTERFACE)
 

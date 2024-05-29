@@ -1,8 +1,9 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(imgui-cocos LANGUAGES CXX)
 if (APPLE) # enable OBJCXX for macOS
-    enable_language(OBJCXX)
+    project(imgui-cocos LANGUAGES CXX OBJCXX)
+else()
+    project(imgui-cocos)
 endif()
 
 add_library(imgui-cocos INTERFACE)
@@ -19,6 +20,7 @@ target_include_directories(imgui-cocos INTERFACE include)
 if (APPLE)
     target_sources(imgui-cocos INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/src/retina.mm)
     set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/src/retina.mm PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
+    target_compile_definitions(imgui-cocos PRIVATE -DCommentType=CommentTypeDummy)
 endif()
 
 option(HAS_IMGUI "If imgui is already provided externally" OFF)

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(imgui-cocos)
+project(imgui-cocos LANGUAGES CXX OBJCXX)
 
 add_library(imgui-cocos INTERFACE)
 
